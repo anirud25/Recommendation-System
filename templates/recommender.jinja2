@@ -1,0 +1,51 @@
+{% import "macros.html" as macros %}
+{% include "base.html" %}
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Recommender API</title>
+  
+</head>
+
+<body>
+  <div class="login">
+	<h1>Recommend Movies</h1>
+
+    {# <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('recommender')}}"method="post">
+    	<input type="text" name="movie_name" placeholder="Movie You Like" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Recommend</button>
+    </form> #}
+
+   <br>
+   <br>
+   {% if content %}
+    <h2> Your Movie : <h2>
+    <p>
+    <ul>
+        
+      <li>Title: {{ content[1][0] }} {{ content[1][1] }}</li>
+      <img src= {{ content[1][2] }} alt="Image"/>
+        
+    </ul> </p>
+    {% endif %}
+
+  </div>
+  
+    {% if rec_movies %}
+    <h2> Your Recommendations : <h2>
+    <p>
+    <ul>
+        {% for movie,link in rec_movies %}
+            <li><a href={{ link }}>{{ movie }} </a></li>
+        {% endfor %}
+
+    </ul> </p>
+    {% endif %}
+
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{% macro light_or_dark_mode(element) %}
+  {% if request.args.get('mode') == "dark" %}
+    <a href="{{ request.path }}" style="left: 0; position: relative;">Switch to Light Mode</a>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_dark.css') }}">
+  {% else %}
+    <a href="{{ request.path }}?mode=dark">Switch to Dark Mode</a>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% endif %}
+{% endmacro %}
+
+{% macro footer(body) %}
+<footer class="footer">
+    <a href= {{ url_for('home') }} style="text-align: left; left: 0; position: relative;">Home</a>
+    {{ light_or_dark_mode(body) }}
+    <small>Copyright &copy;2023. Recommendation System. All rights reserved.</small>
+</footer>
+{% endmacro %}
