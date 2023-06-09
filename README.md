@@ -1,2 +1,2 @@
 # Recommendation-System
-Movie Recommendation project
+Movie Recommendation project using Natural Language Processing.
